@@ -1,17 +1,15 @@
-import { Box, Icon } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons";
+import { Flex, Image, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import logo from "../../assets/gatlas.png";
 
 export default (): JSX.Element => (
   <Link to="/">
-    <Box
-      flex="initial"
-      p="5px"
-      boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;"
-      bg="white"
-      borderRadius="5px"
-    >
-      <Icon as={StarIcon} fontSize="30px" color="indianred" />
-    </Box>
+    <Flex gap={2} alignItems="center">
+      <Image src={logo} width={10} height={10} />
+      <Flex fontSize={24} fontWeight="bold">
+        <Text>G</Text>
+        <Text color="#f0ac75">Atlas</Text>
+      </Flex>
+    </Flex>
   </Link>
 );
