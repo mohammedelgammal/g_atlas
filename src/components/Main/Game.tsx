@@ -47,9 +47,11 @@ export default ({
           <Stack width="100%">
             <Wrap justifyContent="space-between">
               <Wrap>
-                {_.range(0, _.random(0, iconsMap.length)).map((icon, index) => (
-                  <Icon color="gray.500" key={index} as={iconsMap[icon]} />
-                ))}
+                {_.take(_.shuffle(iconsMap), _.random(1, iconsMap.length)).map(
+                  (icon, index) => (
+                    <Icon color="gray.500" key={index} as={icon} />
+                  )
+                )}
               </Wrap>
               <Tag borderRadius="full" variant="solid" colorScheme="green">
                 {added}

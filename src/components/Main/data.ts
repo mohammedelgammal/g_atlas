@@ -1,7 +1,7 @@
 import { IconType } from "react-icons";
 
 import { BsGlobe, BsNintendoSwitch, BsXbox } from "react-icons/bs";
-import { FaApple, FaLinux, FaWindows, FaXbox } from "react-icons/fa";
+import { FaApple, FaLinux, FaWindows } from "react-icons/fa";
 import { TbPlaystationTriangle, TbXboxB } from "react-icons/tb";
 import { MdPhoneIphone } from "react-icons/md";
 import {
@@ -11,7 +11,6 @@ import {
   SiPlaystation4,
   SiPlaystation5,
   SiPlaystationvita,
-  SiXbox,
 } from "react-icons/si";
 
 export const iconsMap: IconType[] = [
@@ -19,13 +18,10 @@ export const iconsMap: IconType[] = [
   SiPlaystation3,
   SiPlaystation4,
   SiPlaystation5,
-  SiXbox,
   BsXbox,
-  FaXbox,
   TbXboxB,
   SiNintendo,
   SiNintendo3Ds,
-  SiNintendo,
   SiPlaystationvita,
   TbPlaystationTriangle,
   BsNintendoSwitch,
