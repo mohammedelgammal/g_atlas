@@ -10,4 +10,6 @@ export default class ApiClient<T> {
   }
   register = (requestPayload: T): Promise<T> =>
     axiosInstance.post(this.endPoint, requestPayload).then((res) => res.data);
+  login = (requestPayload: T): Promise<T> =>
+    axiosInstance.post(this.endPoint, requestPayload).then((res) => res.data);
 }

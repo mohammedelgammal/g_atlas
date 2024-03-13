@@ -6,3 +6,4 @@ export const GAME_DETAILS_KEY = (id: number) => ["game", id];
 export const SCREENSHOTS_QUERY_KEY = (id: number) => ["screenshots", id];
 export const TRAILERS_QUERY_KEY = (id: number) => ["trailers", id];
 export const REGISTER_QUERY_KEY = ["register"];
+export const LOGIN_QUERY_KEY = ["login"];

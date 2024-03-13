@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
 import User from "./models/user.model";
 
 const SERVER_PORT = 8000;
@@ -27,13 +28,20 @@ app.post("/api/register", async (req, res) => {
 });
 
 app.post("/api/login", async (req, res) => {
+  const userData = req.body.data;
+  console.log(userData);
   const targetUser = await User.findOne({
-    email: req.body.email,
-    password: req.body.password,
+    email: userData.email,
+    password: userData.password,
   });
 
-  if (targetUser) res.json({ status: "ok", user: true });
-  else res.json({ status: "error", user: false });
+  if (targetUser) {
+    const token = jwt.sign(
+      { email: targetUser.email, username: targetUser.username },
+      Date().toString()
+    );
+    res.json({ status: 200, token });
+  } else res.json({ status: 401, message: "Invalid credentials" });
 });
 
 app.listen(SERVER_PORT, () => {
