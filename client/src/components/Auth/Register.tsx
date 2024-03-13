@@ -7,10 +7,19 @@ export default (): JSX.Element => {
   const usernameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { data, isLoading, error, isSuccess } = useRegister();
+  const { data, isLoading, error, isSuccess, mutate } = useRegister();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(data, isLoading, error, isSuccess);
+    mutate({
+      data: {
+        username: usernameRef.current?.value,
+        email: emailRef.current?.value,
+        password: passwordRef.current?.value,
+      },
+    });
+    console.log("data", data);
+    console.log("isLoading", isLoading);
+    console.log("error", error);
   };
 
   return (

@@ -1,11 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import authService from "../services/authService";
-import ms from "ms";
-import { AUTH_QUERY_KEY } from "../constants";
+import { REGISTER_QUERY_KEY } from "../constants";
 
 export default () =>
-  useQuery({
-    queryKey: AUTH_QUERY_KEY,
-    queryFn: authService.register,
-    staleTime: ms("1d"),
+  useMutation({
+    mutationKey: REGISTER_QUERY_KEY,
+    mutationFn: authService.register,
   });
