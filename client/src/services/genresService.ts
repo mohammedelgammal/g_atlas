@@ -1,4 +1,4 @@
-import ApiClient from "./apiClient";
+import ApiClient from "./gameApiClient";
 
 export interface Genre {
   id: number;

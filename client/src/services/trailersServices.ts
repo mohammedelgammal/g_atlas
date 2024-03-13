@@ -1,4 +1,4 @@
-import ApiClient, { Response } from "./apiClient";
+import ApiClient, { Response } from "./gameApiClient";
 
 export interface Trailer {
   id: number;

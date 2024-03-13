@@ -1,4 +1,4 @@
-import ApiClient from "./apiClient";
+import ApiClient from "./gameApiClient";
 
 interface General {
   id: number;

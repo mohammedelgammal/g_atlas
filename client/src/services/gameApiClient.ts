@@ -7,7 +7,7 @@ export interface Response<T> {
 }
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL: import.meta.env.VITE_GAME_API_BASE_URL,
 });
 
 export default class ApiClient<T> {

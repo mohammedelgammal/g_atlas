@@ -3,6 +3,8 @@ import App from "./App";
 import ErrorPage from "./components/ErrorPage";
 import GameDetails from "./components/GameDetails/GameDetails";
 import Games from "./components/Games";
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
 
 export default createBrowserRouter([
   {
@@ -14,6 +16,14 @@ export default createBrowserRouter([
       {
         path: "games/:id",
         element: <GameDetails />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
     ],
   },
