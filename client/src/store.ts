@@ -10,6 +10,11 @@ interface StoreType {
   search: string;
   setSearch: (search: string) => void;
   resetFilters: () => void;
+  user: {
+    username: string;
+    email: string;
+  };
+  setUser: (user: { username: string; email: string }) => void;
 }
 
 const useStore = create<StoreType>((set) => ({
@@ -28,6 +33,11 @@ const useStore = create<StoreType>((set) => ({
       ordering: "",
       search: "",
     }),
+  user: {
+    username: "",
+    email: "",
+  },
+  setUser: (user) => set({ user }),
 }));
 
 export default useStore;
