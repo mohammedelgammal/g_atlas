@@ -1,13 +1,23 @@
 import { useRef } from "react";
-import { Button, Flex, Input, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Button,
+  Flex,
+  Input,
+  Text,
+} from "@chakra-ui/react";
 import useRegister from "../../hooks/useRegister";
 
 export default (): JSX.Element => {
   const usernameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const { data, isLoading, error, isSuccess, mutate } = useRegister();
+
+  const { isError, mutate } = useRegister();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     mutate({
@@ -17,9 +27,6 @@ export default (): JSX.Element => {
         password: passwordRef.current?.value,
       },
     });
-    console.log("data", data);
-    console.log("isLoading", isLoading);
-    console.log("error", error);
   };
 
   return (
@@ -47,6 +54,13 @@ export default (): JSX.Element => {
           />
         </Flex>
         <Button type="submit">Sign up</Button>
+        {isError && (
+          <Alert status="error">
+            <AlertIcon />
+            <AlertTitle>Error: </AlertTitle>
+            <AlertDescription>{}</AlertDescription>
+          </Alert>
+        )}
         <Link to="/login">Already have an account? Log in.</Link>
       </Flex>
     </form>

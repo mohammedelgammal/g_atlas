@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import authService from "../services/loginService";
+import { loginService } from "../services/authService";
 import { LOGIN_QUERY_KEY } from "../constants";
 import { useNavigate } from "react-router-dom";
 import useStore from "../store";
@@ -15,7 +15,7 @@ export default () => {
   );
   return useMutation({
     mutationKey: LOGIN_QUERY_KEY,
-    mutationFn: authService.login,
+    mutationFn: loginService.login,
     onSuccess: (res) => {
       if (res.status === 401) return;
       const usere = jwtDecode(res.token);

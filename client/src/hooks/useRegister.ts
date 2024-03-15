@@ -1,9 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import authService from "../services/registerService";
+import { registerService } from "../services/authService";
 import { REGISTER_QUERY_KEY } from "../constants";
 
-export default () =>
-  useMutation({
+export default () => {
+  const navigate = useNavigate();
+
+  return useMutation({
     mutationKey: REGISTER_QUERY_KEY,
-    mutationFn: authService.register,
+    mutationFn: registerService.register,
+    onSuccess: () => navigate("/login"),
   });
+};
