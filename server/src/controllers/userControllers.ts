@@ -60,7 +60,8 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 const getMe = asyncHandler(async (req, res) => {
-  const targetUser = await UserModel.findOne(req.body._id);
+  const { user } = req.body;
+  const targetUser = await UserModel.findOne(user._id);
   if (targetUser)
     res.status(200).json({
       id: targetUser._id,
