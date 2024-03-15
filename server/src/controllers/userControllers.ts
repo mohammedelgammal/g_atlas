@@ -1,37 +1,77 @@
-import { Request, Response } from "express";
+import Schema from "mongoose";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import asyncHandler from "express-async-handler";
 import UserModel from "../models/user.model";
 
-const registerUser = async (req: Request, res: Response) => {
-  try {
-    const newUser = req.body.data;
-    await UserModel.create({
-      email: newUser.email,
-      username: newUser.username,
-      password: newUser.password,
-    });
-    res.status(201).send("User created successfully");
-  } catch (err) {
-    console.log(req.body);
-    res.json({ status: "error", message: "User already exists" });
+const registerUser = asyncHandler(async (req, res) => {
+  // incomplete req data
+  const { username, email, password } = req.body;
+  if (!username || !email || !password) {
+    res.status(400);
+    throw new Error("All fields are mandatory!");
   }
-};
 
-const loginUser = async (req: Request, res: Response) => {
-  const userData = req.body.data;
-  console.log(userData);
-  const targetUser = await UserModel.findOne({
-    email: userData.email,
-    password: userData.password,
+  // already existed user
+  const targetUser = await UserModel.findOne({ email });
+  if (targetUser) {
+    res.status(400);
+    throw new Error("User already exists");
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  const newUser = await UserModel.create({
+    username,
+    email,
+    password: hashedPassword,
   });
 
-  if (targetUser) {
-    const token = jwt.sign(
-      { email: targetUser.email, username: targetUser.username },
-      Date().toString()
-    );
-    res.json({ status: 200, token });
-  } else res.json({ status: 401, message: "Invalid credentials" });
-};
+  if (newUser) {
+    res.status(201).json({
+      _id: newUser.id,
+      username: newUser.username,
+      email: newUser.email,
+      token: generateToken(newUser._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid user data");
+  }
+});
 
-export { registerUser, loginUser };
+const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  const targetUser = await UserModel.findOne({ email });
+
+  if (targetUser && (await bcrypt.compare(password, targetUser.password))) {
+    res.json({
+      _id: targetUser.id,
+      name: targetUser.username,
+      email: targetUser.email,
+      token: generateToken(targetUser._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid credentials");
+  }
+});
+
+const getMe = asyncHandler(async (req, res) => {
+  const targetUser = await UserModel.findOne(req.body._id);
+  if (targetUser)
+    res.status(200).json({
+      id: targetUser._id,
+      username: targetUser.username,
+      email: targetUser.email,
+    });
+});
+
+const generateToken = (id: Schema.Types.ObjectId) =>
+  jwt.sign({ id }, process.env.JWT_SECRET!, {
+    expiresIn: "30d",
+  });
+
+export { registerUser, loginUser, getMe };

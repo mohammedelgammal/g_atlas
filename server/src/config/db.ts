@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.DB_CONNECTION_URI!);
-    console.info(`Connecting to mongoDB on port ${conn.connection.port}`);
+    console.info(`Connected to mongoDB on port ${conn.connection.port}`);
   } catch (err) {
     console.error(err);
     process.exit(1);
