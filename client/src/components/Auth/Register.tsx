@@ -1,14 +1,15 @@
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import {
   Alert,
   AlertDescription,
   AlertIcon,
-  AlertTitle,
   Button,
   Flex,
   Input,
+  Spinner,
   Text,
+  Link,
 } from "@chakra-ui/react";
 import useRegister from "../../hooks/useRegister";
 
@@ -17,15 +18,13 @@ export default (): JSX.Element => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  const { isError, mutate } = useRegister();
+  const { error, isError, isLoading, mutate } = useRegister();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     mutate({
-      data: {
-        username: usernameRef.current?.value,
-        email: emailRef.current?.value,
-        password: passwordRef.current?.value,
-      },
+      username: usernameRef.current!.value,
+      email: emailRef.current!.value,
+      password: passwordRef.current!.value,
     });
   };
 
@@ -39,29 +38,35 @@ export default (): JSX.Element => {
             ref={usernameRef}
             placeholder="Username"
             isRequired
+            isDisabled={isLoading}
           />
           <Input
             type="email"
             ref={emailRef}
             placeholder="Email Address"
             isRequired
+            isDisabled={isLoading}
           />
           <Input
             type="password"
             ref={passwordRef}
             placeholder="Create a Password"
             isRequired
+            isDisabled={isLoading}
           />
         </Flex>
-        <Button type="submit">Sign up</Button>
+        <Button type="submit" isDisabled={isLoading}>
+          {isLoading ? <Spinner /> : "Sign up"}
+        </Button>
         {isError && (
           <Alert status="error">
             <AlertIcon />
-            <AlertTitle>Error: </AlertTitle>
-            <AlertDescription>{}</AlertDescription>
+            <AlertDescription>{error.response.data.message}</AlertDescription>
           </Alert>
         )}
-        <Link to="/login">Already have an account? Log in.</Link>
+        <Link width="fit-content" to="/login" as={RouterLink}>
+          Already have an account? Log in.
+        </Link>
       </Flex>
     </form>
   );
