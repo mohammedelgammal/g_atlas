@@ -12,12 +12,17 @@ export default class ApiClient<T> {
   register = (createUserData: CreateUserData): Promise<T> =>
     axiosInstance
       .post<T>(this.endPoint, createUserData)
-      .then((res) => res.data);
+      .then((res) => {
+        if (res.status === 201) {
+          return res.data;
+        }
+      })
+      .catch((err) => err.response.data);
   login = (reqConfig: AxiosRequestConfig): Promise<T> =>
     axiosInstance
       .post<T>(this.endPoint, reqConfig)
       .then((res) => res.data)
-      .catch((err) => err.response.data);
+      .catch((err) => err.response.data.message);
   getMe = (reqConfig: AxiosRequestConfig): Promise<T> =>
     axiosInstance.get<T>(this.endPoint, reqConfig).then((res) => res.data);
 }

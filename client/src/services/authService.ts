@@ -7,6 +7,7 @@ export interface GetMeResponse {
 }
 export interface AuthResponse extends GetMeResponse {
   token: string;
+  message?: string;
 }
 
 const registerService = new ApiClient<AuthResponse>("/register"),
