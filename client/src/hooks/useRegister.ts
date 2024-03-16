@@ -1,9 +1,10 @@
+import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { AuthResponse, registerService } from "../services/authService";
 import { REGISTER_QUERY_KEY } from "../constants";
 import { UseFormReset, UseFormSetError } from "react-hook-form";
-import { FormFields } from "../components/Auth/Register";
+import { RegisterFormData } from "../components/Auth/Register";
 
 export interface CreateUserData {
   username: string;
@@ -11,21 +12,18 @@ export interface CreateUserData {
   password: string;
 }
 
-export interface ResponseError extends Error {
-  response: {
-    data: {
-      message: string;
-    };
-  };
+export interface LoginUserData {
+  email: string;
+  password: string;
 }
 
 export default (
-  reset: UseFormReset<FormFields>,
-  setError: UseFormSetError<FormFields>
+  reset: UseFormReset<RegisterFormData>,
+  setError: UseFormSetError<RegisterFormData>
 ) => {
   const navigate = useNavigate();
 
-  return useMutation<AuthResponse, ResponseError, CreateUserData>({
+  return useMutation<AuthResponse, AxiosError<AxiosError>, CreateUserData>({
     mutationKey: REGISTER_QUERY_KEY,
     mutationFn: registerService.register,
     onSuccess: (res) => {
@@ -36,6 +34,14 @@ export default (
         });
       reset();
       navigate("/login");
+    },
+    onError: (err) => {
+      if (err.request.status === 400)
+        setError("root", {
+          type: "value",
+          message: err.response?.data.message,
+        });
+      localStorage.removeItem("loginToken");
     },
   });
 };
