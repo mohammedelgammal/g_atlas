@@ -1,13 +1,15 @@
 import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useGetMe from "../hooks/useGetMe";
 
 export default (): JSX.Element => {
-  const { to } = useParams();
   const navigate = useNavigate();
-  
-  if (to === "login") navigate("/login");
-  else useGetMe();
+
+  // After registering redirect to login
+  if (!localStorage.getItem("token")) navigate("/login");
+
+  // If user is already logged in validate token
+  useGetMe();
 
   return (
     <Flex

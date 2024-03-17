@@ -6,6 +6,7 @@ import Games from "./components/Games";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import Redirecting from "./common/Redirecting";
+import AuthRoute from "./common/AuthRoute";
 
 export default createBrowserRouter([
   {
@@ -20,14 +21,14 @@ export default createBrowserRouter([
       },
       {
         path: "register",
-        element: <Register />,
+        element: <AuthRoute children={<Register />} />,
       },
       {
         path: "login",
-        element: <Login />,
+        element: <AuthRoute children={<Login />} />,
       },
       {
-        path: "redirecting/:to",
+        path: "redirecting",
         element: <Redirecting />,
       },
     ],

@@ -22,8 +22,8 @@ export default () => {
       setUser(data);
       navigate("/");
     },
-    onError: (error) => {
-      console.error(error);
+    onError: () => {
+      localStorage.removeItem("loginToken");
       navigate("/login");
     },
   });
