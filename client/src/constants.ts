@@ -11,3 +11,4 @@ export const REGISTER_QUERY_KEY = ["register"];
 export const LOGIN_QUERY_KEY = ["login"];
 export const GET_ME_QUERY_KEY = ["me", token];
 export const PRIMARY_COlOR = "#f0ac75";
+export const CHARACTERS_LIMIT = 300;

@@ -1,29 +1,31 @@
-import { Button, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import { Button, Text } from "@chakra-ui/react";
+import { ChildrenProps } from "src/types/Common";
 
-interface Props {
-  children: string;
-}
+export default ({ children }: ChildrenProps): JSX.Element => {
+  const [isExpanded, setExpanded] = useState<boolean>(false);
+  const CHARACTERS_LIMIT = 300;
 
-export default ({ children }: Props): JSX.Element => {
-  const [expanded, setExpanded] = useState(false);
-  const limit = 300;
+  if (children.length <= CHARACTERS_LIMIT) {
+    return <Text>{children}</Text>;
+  }
 
-  if (children.length <= limit) return <Text>{children}</Text>;
-
-  const summary = expanded ? children : children.substring(0, limit) + "...";
+  const summary = !isExpanded
+    ? children.substring(0, CHARACTERS_LIMIT) + "..."
+    : children;
 
   return (
     <Text>
       {summary}
       <Button
         size="xs"
+        variant="ghost"
         marginLeft={1}
         fontWeight="bold"
-        colorScheme="yellow"
-        onClick={() => setExpanded(!expanded)}
+        colorScheme="teal"
+        onClick={() => setExpanded((isExpanded) => !isExpanded)}
       >
-        {expanded ? "Show Less" : "Read More"}
+        {isExpanded ? "Show Less" : "Read More"}
       </Button>
     </Text>
   );
