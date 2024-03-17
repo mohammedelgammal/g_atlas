@@ -11,10 +11,11 @@ interface StoreType {
   setSearch: (search: string) => void;
   resetFilters: () => void;
   user: {
+    _id: string;
     username: string;
     email: string;
   };
-  setUser: (user: { username: string; email: string }) => void;
+  setUser: (user: { _id: string; username: string; email: string }) => void;
 }
 
 const useStore = create<StoreType>((set) => ({
@@ -34,6 +35,7 @@ const useStore = create<StoreType>((set) => ({
       search: "",
     }),
   user: {
+    _id: "",
     username: "",
     email: "",
   },

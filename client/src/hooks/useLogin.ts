@@ -5,12 +5,13 @@ import { LoginUserData } from "./useRegister";
 import { UseFormReset, UseFormSetError } from "react-hook-form";
 import { LoginFormFields } from "../components/Auth/Login";
 import { AxiosError } from "axios";
-import useGetMe from "./useGetMe";
+import { useNavigate } from "react-router-dom";
 
 export default (
   reset: UseFormReset<LoginFormFields>,
   setError: UseFormSetError<LoginFormFields>
 ) => {
+  const navigate = useNavigate();
   return useMutation<AuthResponse, AxiosError<AxiosError>, LoginUserData>({
     mutationKey: LOGIN_QUERY_KEY,
     mutationFn: loginService.login,
@@ -20,7 +21,7 @@ export default (
     onSuccess: (res) => {
       localStorage.setItem("loginToken", res.token);
       reset();
-      useGetMe();
+      navigate("/redirecting");
     },
     onError: (err) => {
       if (err.request.status === 400)

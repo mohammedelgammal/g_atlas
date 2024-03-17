@@ -8,7 +8,7 @@ export default (): JSX.Element => {
   // After registering redirect to login
   if (!localStorage.getItem("token")) navigate("/login");
 
-  // If user is already logged in validate token
+  // if user is logged in redirect to home
   useGetMe();
 
   return (
