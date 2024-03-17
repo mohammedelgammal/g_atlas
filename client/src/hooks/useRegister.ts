@@ -26,14 +26,12 @@ export default (
   return useMutation<AuthResponse, AxiosError<AxiosError>, CreateUserData>({
     mutationKey: REGISTER_QUERY_KEY,
     mutationFn: registerService.register,
-    onSuccess: (res) => {
-      if (res.message)
-        return setError("root", {
-          type: "value",
-          message: res.message,
-        });
+    onMutate: () => {
+      localStorage.removeItem("loginToken");
+    },
+    onSuccess: () => {
       reset();
-      navigate("/login");
+      navigate("/redirecting/login");
     },
     onError: (err) => {
       if (err.request.status === 400)
@@ -41,7 +39,6 @@ export default (
           type: "value",
           message: err.response?.data.message,
         });
-      localStorage.removeItem("loginToken");
     },
   });
 };

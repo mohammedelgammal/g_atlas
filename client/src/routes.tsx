@@ -5,6 +5,7 @@ import GameDetails from "./components/GameDetails/GameDetails";
 import Games from "./components/Games";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
+import Redirecting from "./common/Redirecting";
 
 export default createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export default createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "redirecting/:to",
+        element: <Redirecting />,
       },
     ],
   },

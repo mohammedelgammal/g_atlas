@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import { CreateUserData, LoginUserData } from "../hooks/useRegister";
 
 const axiosInstance = axios.create({
@@ -15,6 +15,12 @@ export default class ApiClient<T> {
       .then((res) => res.data);
   login = (loginUserData: LoginUserData): Promise<T> =>
     axiosInstance.post<T>(this.endPoint, loginUserData).then((res) => res.data);
-  getMe = (reqConfig: AxiosRequestConfig): Promise<T> =>
-    axiosInstance.get<T>(this.endPoint, reqConfig).then((res) => res.data);
+  getMe = (): Promise<T> =>
+    axiosInstance
+      .get<T>(this.endPoint, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("loginToken")}`,
+        },
+      })
+      .then((res) => res.data);
 }

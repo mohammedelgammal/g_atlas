@@ -77,7 +77,7 @@ export default (): JSX.Element => {
                   onClick={() => setShowPassword((show) => !show)}
                   variant="ghost"
                 >
-                  {showPassword ? <ViewOffIcon /> : <ViewIcon />}
+                  {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                 </Button>
               </InputRightElement>
             </InputGroup>
