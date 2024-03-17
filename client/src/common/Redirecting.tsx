@@ -1,6 +1,7 @@
 import { Flex, Spinner, Stack, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import useGetMe from "../hooks/useGetMe";
+import { PRIMARY_COlOR } from "../constants";
 
 export default (): JSX.Element => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default (): JSX.Element => {
           thickness="4px"
           speed="0.80s"
           emptyColor="gray.200"
-          color="#f0ac75"
+          color={PRIMARY_COlOR}
           size="xl"
         />
         <Text fontSize="large">Redirecting...</Text>

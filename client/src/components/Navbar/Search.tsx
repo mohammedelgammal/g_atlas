@@ -1,11 +1,18 @@
 import { useState } from "react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { Box, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import {
+  Box,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  useColorMode,
+} from "@chakra-ui/react";
 import useSearchDebounce from "../../hooks/useSearchDebounce";
 
 export default (): JSX.Element => {
   const [term, setTerm] = useState<string>("");
   const debouncedSearch = useSearchDebounce(term, 500);
+  const { colorMode } = useColorMode();
 
   return (
     <Box flex="auto">
@@ -16,7 +23,7 @@ export default (): JSX.Element => {
         <Input
           borderRadius="50px"
           onChange={(e) => setTerm(e.target.value)}
-          variant="filled"
+          variant={colorMode === "light" ? "outline" : "filled"}
           placeholder="Search"
           value={debouncedSearch}
         />

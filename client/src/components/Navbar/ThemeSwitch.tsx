@@ -1,4 +1,4 @@
-import { Box, Switch } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useColorMode } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 
@@ -7,12 +7,13 @@ export default (): JSX.Element => {
 
   return (
     <Box flex="initial" display="flex" alignItems="center" gap="10px">
-      <Switch
-        colorScheme="green"
-        isChecked={colorMode === "light"}
-        onChange={toggleColorMode}
-      />
-      {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+      <Box onClick={toggleColorMode} cursor="pointer">
+        {colorMode === "light" ? (
+          <MoonIcon color="#3b4073" fontSize={18} />
+        ) : (
+          <SunIcon color="#fdff86" fontSize={18} />
+        )}
+      </Box>
     </Box>
   );
 };
