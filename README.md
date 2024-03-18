@@ -29,5 +29,3 @@ GAtlas is a game atlas for gamers to search for their favorite games, view detai
    ```
 
 Follow the instructions in the `client` and `server` README.md directories to run the client and server locally.
-
-[]: # (END)
