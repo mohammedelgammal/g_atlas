@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CreateUserData, LoginUserData } from "../hooks/useRegister";
+import { CreateUserData, LoginUserData } from "src/types/Services";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_AUTH_API_BASE_URL,

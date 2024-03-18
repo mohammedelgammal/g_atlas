@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { TRAILERS_QUERY_KEY } from "../constants";
-import trailersServices, { Trailer } from "../services/trailersServices";
 import ms from "ms";
-import { ResponseType } from "../services/gameApiClient";
+import trailersServices from "src/services/trailersServices";
+import { TRAILERS_QUERY_KEY } from "src/constants";
+import { ResponseType, TrailerType } from "src/types/Services";
 
 export default (id: number) =>
-  useQuery<ResponseType<Trailer>, Error>({
+  useQuery<ResponseType<TrailerType>, Error>({
     queryKey: TRAILERS_QUERY_KEY(id),
     queryFn: () => trailersServices.get(`${id}/movies`),
     staleTime: ms("2d"),
