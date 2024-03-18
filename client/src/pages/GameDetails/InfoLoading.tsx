@@ -1,7 +1,8 @@
 import { SimpleGrid, Skeleton, SkeletonText, Stack } from "@chakra-ui/react";
+import { getInfoLoadingSkeleton } from "src/utils/helpers";
 
 export default (): JSX.Element => {
-  const skeletons = Array.from({ length: 4 }, (v, i): number => (v ? i : i));
+  const skeletons = getInfoLoadingSkeleton(4);
 
   return (
     <Stack spacing="10px">

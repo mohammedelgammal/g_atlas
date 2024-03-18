@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
   Alert,
@@ -13,11 +14,10 @@ import {
   InputRightElement,
   InputGroup,
 } from "@chakra-ui/react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import useRegister from "../../hooks/useRegister";
-import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import AuthRoute from "../../common/AuthRoute";
+import { SubmitHandler, useForm } from "react-hook-form";
+import useRegister from "src/hooks/useRegister";
+import AuthRoute from "src/common/AuthRoute";
 import { RegisterFormData } from "src/types/Services";
 
 export default (): JSX.Element => {

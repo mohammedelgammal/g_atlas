@@ -1,7 +1,9 @@
 import { SimpleGrid, Skeleton } from "@chakra-ui/react";
+import { getScreenshotsLoadingSkeletons } from "src/utils/helpers";
 
 export default (): JSX.Element => {
-  const skeletons = Array.from({ length: 8 }, (v, i): number => (v ? i : i));
+  const skeletons = getScreenshotsLoadingSkeletons(8);
+
   return (
     <SimpleGrid
       columns={{

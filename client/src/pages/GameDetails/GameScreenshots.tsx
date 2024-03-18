@@ -1,11 +1,8 @@
 import { Alert, Box, GridItem, Image, SimpleGrid } from "@chakra-ui/react";
-import useScreenshots from "../../hooks/useScreenshots";
+import useScreenshots from "src/hooks/useScreenshots";
 import GameScreenshotsLoading from "./GameScreenshotsLoading";
-import fallBackImage from "../../assets/Image_not_available.png";
-
-interface GameScreenshotsProps {
-  id: string | undefined;
-}
+import { GameScreenshotsProps } from "src/types/Game";
+import fallBackImage from "src/assets/Image_not_available.png";
 
 export default ({ id = "" }: GameScreenshotsProps): JSX.Element => {
   const { data: screenshots, isLoading, error } = useScreenshots(parseInt(id));
@@ -23,7 +20,7 @@ export default ({ id = "" }: GameScreenshotsProps): JSX.Element => {
       >
         {screenshots?.results.map(({ id, image }) => (
           <GridItem key={id}>
-            <Image src={image || fallBackImage}  />
+            <Image src={image || fallBackImage} />
           </GridItem>
         ))}
       </SimpleGrid>

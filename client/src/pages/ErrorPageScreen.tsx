@@ -1,16 +1,17 @@
-import { Button, Image, Stack, Text } from "@chakra-ui/react";
-import { HiHomeModern } from "react-icons/hi2";
 import {
   isRouteErrorResponse,
   useNavigate,
   useRouteError,
 } from "react-router-dom";
-import errorBear from "../assets/error_bear.png";
+import { Button, Image, Stack, Text } from "@chakra-ui/react";
+import { HiHomeModern } from "react-icons/hi2";
+import errorBear from "src/assets/error_bear.png";
 
 export default () => {
   const navigate = useNavigate();
   const error = useRouteError();
   const isRouteError = isRouteErrorResponse(error);
+  
   return (
     isRouteError && (
       <Stack

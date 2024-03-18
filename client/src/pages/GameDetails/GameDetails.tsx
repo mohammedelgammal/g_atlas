@@ -1,5 +1,5 @@
-import { Flex, Stack } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
+import { Flex, Stack } from "@chakra-ui/react";
 import GameInfo from "./GameInfo";
 import GameScreenshots from "./GameScreenshots";
 import GamesTrailers from "./GamesTrailers";

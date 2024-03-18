@@ -1,9 +1,5 @@
 import { List, ListItem, Stack, Tag, Text } from "@chakra-ui/react";
-
-interface InfoBoxProps {
-  title: string;
-  list: string[] | string;
-}
+import { InfoBoxProps } from "src/types/Game";
 
 export default ({ title, list }: InfoBoxProps): JSX.Element => {
   return (
