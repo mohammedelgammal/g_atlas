@@ -1,10 +1,4 @@
-import ApiClient, { Response } from "./gameApiClient";
+import ApiClient from "./gameApiClient";
+import { ResponseType, TrailerType } from "src/types/Services";
 
-export interface Trailer {
-  id: number;
-  name: string;
-  preview: string;
-  data: number[];
-}
-
-export default new ApiClient<Response<Trailer>>("/games");
+export default new ApiClient<ResponseType<TrailerType>>("/games");

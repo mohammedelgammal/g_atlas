@@ -1,4 +1,4 @@
-import noImage from "../../src/assets/no-image-placeholder.webp";
+import noImage from "src/assets/no-image-placeholder.webp";
 
 export default (url: string): string => {
   if (!url) return noImage;

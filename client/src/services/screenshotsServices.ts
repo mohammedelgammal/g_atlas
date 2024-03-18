@@ -1,10 +1,4 @@
-import ApiClient, { Response } from "./gameApiClient";
+import ApiClient from "./gameApiClient";
+import { ResponseType, ScreenshotType } from "src/types/Services";
 
-export interface Screenshot {
-  id: number;
-  image: string;
-  width: number;
-  height: number;
-}
-
-export default new ApiClient<Response<Screenshot>>("/games");
+export default new ApiClient<ResponseType<ScreenshotType>>("/games");

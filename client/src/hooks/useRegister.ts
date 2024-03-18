@@ -1,21 +1,14 @@
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { AuthResponse, registerService } from "../services/authService";
-import { REGISTER_QUERY_KEY } from "../constants";
 import { UseFormReset, UseFormSetError } from "react-hook-form";
-import { RegisterFormData } from "../pages/Auth/Register";
-
-export interface CreateUserData {
-  username: string;
-  email: string;
-  password: string;
-}
-
-export interface LoginUserData {
-  email: string;
-  password: string;
-}
+import { registerService } from "src/services/authService";
+import { REGISTER_QUERY_KEY } from "src/constants";
+import {
+  AuthResponseType,
+  RegisterFormData,
+  CreateUserData,
+} from "src/types/Services";
 
 export default (
   reset: UseFormReset<RegisterFormData>,
@@ -23,7 +16,7 @@ export default (
 ) => {
   const navigate = useNavigate();
 
-  return useMutation<AuthResponse, AxiosError<AxiosError>, CreateUserData>({
+  return useMutation<AuthResponseType, AxiosError<AxiosError>, CreateUserData>({
     mutationKey: REGISTER_QUERY_KEY,
     mutationFn: registerService.register,
     onMutate: () => {

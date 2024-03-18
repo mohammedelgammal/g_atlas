@@ -1,10 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
-
-export interface Response<T> {
-  count: number;
-  results: T[];
-  next: string;
-}
+import { ResponseType } from "src/types/Services";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_GAME_API_BASE_URL,
@@ -14,9 +9,9 @@ export default class ApiClient<T> {
   constructor(private endPoint: string) {
     this.endPoint = endPoint;
   }
-  getAll = (reqConfig: AxiosRequestConfig): Promise<Response<T>> =>
+  getAll = (reqConfig: AxiosRequestConfig): Promise<ResponseType<T>> =>
     axiosInstance
-      .get<Response<T>>(this.endPoint, {
+      .get<ResponseType<T>>(this.endPoint, {
         ...reqConfig,
         params: {
           ...reqConfig.params,

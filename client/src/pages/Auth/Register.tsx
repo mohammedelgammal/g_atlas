@@ -18,12 +18,7 @@ import useRegister from "../../hooks/useRegister";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import AuthRoute from "../../common/AuthRoute";
-
-export interface RegisterFormData {
-  username: string;
-  email: string;
-  password: string;
-}
+import { RegisterFormData } from "src/types/Services";
 
 export default (): JSX.Element => {
   const [showPassword, setShowPassword] = useState<boolean>(false);

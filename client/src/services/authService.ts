@@ -1,17 +1,8 @@
 import ApiClient from "./authApiClient";
+import { AuthResponseType, GetMeResponseType } from "src/types/Services";
 
-export interface GetMeResponse {
-  _id: string;
-  username: string;
-  email: string;
-}
-export interface AuthResponse extends GetMeResponse {
-  token: string;
-  message?: string;
-}
-
-const registerService = new ApiClient<AuthResponse>("/register"),
-  loginService = new ApiClient<AuthResponse>("/login"),
-  getMeService = new ApiClient<GetMeResponse>("/me");
+const registerService = new ApiClient<AuthResponseType>("/register"),
+  loginService = new ApiClient<AuthResponseType>("/login"),
+  getMeService = new ApiClient<GetMeResponseType>("/me");
 
 export { loginService, registerService, getMeService };

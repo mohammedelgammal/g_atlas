@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import genresService, { Genre } from "../services/genresService";
+import genresService from "src/services/genresService";
 import ms from "ms";
-import { Response } from "../services/gameApiClient";
-import { GENRES_QUERY_KEY } from "../constants";
+import { GenreType, ResponseType } from "src/types/Services";
+import { GENRES_QUERY_KEY } from "src/constants";
 
 export default () =>
-  useQuery<Response<Genre>, Error>({
+  useQuery<ResponseType<GenreType>, Error>({
     queryKey: GENRES_QUERY_KEY,
     queryFn: genresService.getAll,
     staleTime: ms("1d"),

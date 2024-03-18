@@ -1,22 +1,4 @@
 import ApiClient from "./gameApiClient";
+import { GameDetailsType } from "src/types/Services";
 
-interface General {
-  id: number;
-  name: string;
-}
-
-interface Platform {
-  platform: General;
-}
-
-export interface GameDetails {
-  id: number;
-  name: string;
-  description_raw: string;
-  platforms: Platform[];
-  metacritic: number;
-  genres: General[];
-  publishers: General[];
-}
-
-export default new ApiClient<GameDetails>("/games");
+export default new ApiClient<GameDetailsType>("/games");

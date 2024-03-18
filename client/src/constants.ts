@@ -1,9 +1,9 @@
-import { Filters } from "./hooks/useGames";
+import { FiltersType } from "./hooks/useGames";
 
 const token = localStorage.getItem("loginToken");
 
 export const GENRES_QUERY_KEY = ["genres"];
-export const GAMES_QUERY_KEY = (filters: Filters) => ["games", { filters }];
+export const GAMES_QUERY_KEY = (filters: FiltersType) => ["games", { filters }];
 export const GAME_DETAILS_KEY = (id: number) => ["game", id];
 export const SCREENSHOTS_QUERY_KEY = (id: number) => ["screenshots", id];
 export const TRAILERS_QUERY_KEY = (id: number) => ["trailers", id];

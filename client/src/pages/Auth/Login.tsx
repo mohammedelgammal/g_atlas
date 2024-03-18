@@ -18,12 +18,7 @@ import useLogin from "../../hooks/useLogin";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import AuthRoute from "../../common/AuthRoute";
-
-export interface LoginFormFields {
-  username: string;
-  email: string;
-  password: string;
-}
+import { LoginFormFields } from "src/types/FormFields";
 
 export default (): JSX.Element => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
