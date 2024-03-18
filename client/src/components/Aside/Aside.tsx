@@ -1,10 +1,10 @@
 import { Alert, Show, Stack, Text } from "@chakra-ui/react";
-import useGenres from "../../hooks/useGenres";
-import AsideLoading from "./AsideLoading";
-import Genre from "./Genre";
+import { AsideLoading, Genre } from "./components";
+import useGenres from "src/hooks/useGenres";
 
 export default (): JSX.Element => {
   const { data: genres, isLoading, error } = useGenres();
+
   return (
     <Show above="lg">
       <Stack w="200px" spacing={5}>

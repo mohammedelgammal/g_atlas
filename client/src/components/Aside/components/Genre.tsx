@@ -1,14 +1,9 @@
 import { Flex, Image, Text } from "@chakra-ui/react";
 import { useShallow } from "zustand/react/shallow";
-import useCropImage from "../../hooks/useCropImage";
-import useStore from "../../store";
-import fallBackImage from "../../assets/Image_not_available.png";
-
-interface GenreProps {
-  src: string;
-  title: string;
-  slug: string;
-}
+import useStore from "src/store";
+import useCropImage from "src/hooks/useCropImage";
+import { GenreProps } from "src/types/Aside";
+import fallBackImage from "src/assets/Image_not_available.png";
 
 export default ({ src, title, slug }: GenreProps): JSX.Element => {
   const { genres, setGenres } = useStore(
@@ -17,6 +12,7 @@ export default ({ src, title, slug }: GenreProps): JSX.Element => {
       setGenres: state.setGenres,
     }))
   );
+
   return (
     <Flex gap={3} alignItems="center">
       <Image

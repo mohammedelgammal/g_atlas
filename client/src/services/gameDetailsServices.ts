@@ -12,7 +12,7 @@ interface Platform {
 export interface GameDetails {
   id: number;
   name: string;
-  description: string;
+  description_raw: string;
   platforms: Platform[];
   metacritic: number;
   genres: General[];

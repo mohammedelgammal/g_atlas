@@ -25,7 +25,7 @@ export default ({ id = "" }: GameInfoProps): JSX.Element => {
             {gameDetails?.name}
           </Text>
           <Text color="gray">
-            <TruncateText>{gameDetails?.description}</TruncateText>
+            <TruncateText>{gameDetails?.description_raw}</TruncateText>
           </Text>
           <SimpleGrid columns={2} mt={8}>
             <InfoBox
