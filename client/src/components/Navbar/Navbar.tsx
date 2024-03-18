@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { Logo, Search, ThemeSwitch, Authentication } from "./";
+import { Logo, Search, ThemeSwitch, Authentication } from ".";
 import useGetMe from "../../hooks/useGetMe";
 
 export default (): JSX.Element => {

@@ -1,4 +1,8 @@
+import { ImageProps } from "@chakra-ui/react";
 import { IconType } from "react-icons";
+import meh from "../../assets/meh.webp";
+import bullsEye from "../../assets/bulls-eye.webp";
+import thumbsUp from "../../assets/thumbs-up.webp";
 
 import { BsGlobe, BsNintendoSwitch, BsXbox } from "react-icons/bs";
 import { FaApple, FaLinux, FaWindows } from "react-icons/fa";
@@ -91,3 +95,9 @@ export const orderings = [
   { name: "Release date", slug: "released" },
   { name: "Average rating", slug: "rating" },
 ];
+
+export const emojiMap: { [key: number]: ImageProps } = {
+  3: { src: meh, alt: "meh", boxSize: "25px" },
+  4: { src: thumbsUp, alt: "recommended", boxSize: "25px" },
+  5: { src: bullsEye, alt: "exceptional", boxSize: "35px" },
+};

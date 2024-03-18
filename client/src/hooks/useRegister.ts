@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { AuthResponse, registerService } from "../services/authService";
 import { REGISTER_QUERY_KEY } from "../constants";
 import { UseFormReset, UseFormSetError } from "react-hook-form";
-import { RegisterFormData } from "../components/Auth/Register";
+import { RegisterFormData } from "../pages/Auth/Register";
 
 export interface CreateUserData {
   username: string;

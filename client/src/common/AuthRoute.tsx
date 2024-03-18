@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import { AuthProviderProps, DecodedUserData } from "src/types/AuthRoute";
+import { AuthProviderProps, DecodedUserData } from "src/types/Common";
 
 const getIsAuthenticated = (): boolean => {
   const token = localStorage.getItem("loginToken");

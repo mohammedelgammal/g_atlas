@@ -1,8 +1,8 @@
 import { Button, Flex, Select } from "@chakra-ui/react";
 import { CiFilter } from "react-icons/ci";
 import { useShallow } from "zustand/react/shallow";
-import useStore from "../../store";
-import { orderings, platforms as plats } from "./data";
+import useStore from "src/store";
+import { orderings, platforms as plats } from "../data";
 
 export default (): JSX.Element => {
   const { platforms, setPlatforms, ordering, setOrdering, resetFilters } =
@@ -15,6 +15,7 @@ export default (): JSX.Element => {
         resetFilters: state.resetFilters,
       }))
     );
+
   return (
     <Flex gap="20px">
       <Select

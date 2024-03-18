@@ -3,7 +3,7 @@ import { AuthResponse, loginService } from "../services/authService";
 import { LOGIN_QUERY_KEY } from "../constants";
 import { LoginUserData } from "./useRegister";
 import { UseFormReset, UseFormSetError } from "react-hook-form";
-import { LoginFormFields } from "../components/Auth/Login";
+import { LoginFormFields } from "../pages/Auth/Login";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 

@@ -1,7 +1,10 @@
 import { SimpleGrid, Skeleton, SkeletonText, Stack } from "@chakra-ui/react";
+import { getMainLoadingSkeleton } from "src/utils/helpers";
+import { GamesLoadingProps } from "src/types/Main";
 
-export default ({ length }: { length: number }): JSX.Element => {
-  const skeletons = Array.from({ length }, (v, i): number => (v ? i : i));
+export default ({ length }: GamesLoadingProps): JSX.Element => {
+  const skeletons = getMainLoadingSkeleton(length);
+
   return (
     <SimpleGrid
       marginTop="30px"

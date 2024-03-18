@@ -1,9 +1,9 @@
 import { Alert, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { useShallow } from "zustand/react/shallow";
-import useGames from "../../hooks/useGames";
-import useOnScreen from "../../hooks/useOnScreen";
-import useStore from "../../store";
+import useStore from "src/store";
 import { Game, GamesLoading } from "./";
+import useGames from "src/hooks/useGames";
+import useOnScreen from "src/hooks/useOnScreen";
 
 export default (): JSX.Element => {
   const { genres, platforms, ordering, search } = useStore(
@@ -29,6 +29,7 @@ export default (): JSX.Element => {
   });
   const { isVisible, containerRef } = useOnScreen<HTMLDivElement>();
   if (hasNextPage && !error && isVisible) fetchNextPage();
+
   return (
     <>
       {isLoading && <GamesLoading length={10} />}

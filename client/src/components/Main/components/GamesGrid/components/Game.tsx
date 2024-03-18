@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Card,
   CardBody,
@@ -11,11 +12,11 @@ import {
   Wrap,
 } from "@chakra-ui/react";
 import _ from "lodash";
-import { Link } from "react-router-dom";
-import { Game } from "../../services/gamesServices";
 import Emoji from "./Emoji";
-import { iconsMap } from "./data";
-import fallBackImage from "../../assets/Image_not_available.png";
+import { getRandomIcon } from "src/utils/helpers";
+import { iconsMap } from "../../../data";
+import { GameType } from "src/types/Services";
+import fallBackImage from "src/assets/Image_not_available.png";
 
 export default ({
   id,
@@ -26,7 +27,7 @@ export default ({
   released,
   added,
   tba,
-}: Game): JSX.Element => {
+}: GameType): JSX.Element => {
   return (
     <Link to={`games/${id}`}>
       <Card
@@ -47,11 +48,9 @@ export default ({
           <Stack width="100%">
             <Wrap justifyContent="space-between">
               <Wrap>
-                {_.take(_.shuffle(iconsMap), _.random(1, iconsMap.length)).map(
-                  (icon, index) => (
-                    <Icon color="gray.500" key={index} as={icon} />
-                  )
-                )}
+                {getRandomIcon(iconsMap).map((icon, index) => (
+                  <Icon color="gray.500" key={index} as={icon} />
+                ))}
               </Wrap>
               <Tag borderRadius="full" variant="solid" colorScheme="green">
                 {added}
