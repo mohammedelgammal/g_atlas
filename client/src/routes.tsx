@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./pages/ErrorPageScreen";
-import GameDetails from "./pages/GameDetails/GameDetails";
+import GameDetails from "./pages/GameDetailsScreen";
 import Games from "./pages/HomeScreen";
-import Register from "./pages/Authentication/RegisterScreen";
-import Login from "./pages/Authentication/LoginScreen";
+import Register from "./pages/RegisterScreen";
+import Login from "./pages/LoginScreen";
 import Redirecting from "./common/Redirecting";
 
 export default createBrowserRouter([

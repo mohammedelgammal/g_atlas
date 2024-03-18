@@ -1,7 +1,6 @@
 import { Alert, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import useGameDetails from "src/hooks/useGameDetails";
-import InfoBox from "./InfoBox";
-import InfoLoading from "./InfoLoading";
+import { InfoBox, InfoLoading } from "./components";
 import TruncateText from "src/common/TruncateText";
 import { GameInfoProps } from "src/types/Game";
 

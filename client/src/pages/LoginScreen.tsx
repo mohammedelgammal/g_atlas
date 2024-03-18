@@ -1,9 +1,5 @@
-import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
   Button,
   Flex,
   Input,
@@ -11,17 +7,16 @@ import {
   Text,
   Link,
   Stack,
-  InputRightElement,
-  InputGroup,
 } from "@chakra-ui/react";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { SubmitHandler, useForm } from "react-hook-form";
 import AuthRoute from "src/common/AuthRoute";
 import useLogin from "src/hooks/useLogin";
+import PasswordInput from "src/common/PasswordInput";
+import ErrorALert from "src/common/ErrorALert";
+import registerOptions from "src/utils/registerOptions";
 import { LoginFormFields } from "src/types/FormFields";
 
 export default (): JSX.Element => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const {
     register,
     setError,
@@ -45,43 +40,20 @@ export default (): JSX.Element => {
                 type="email"
                 placeholder="Email"
                 isDisabled={isLoading}
-                {...register("email", {
-                  pattern: {
-                    value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
-                    message: "Invalid email",
-                  },
-                  maxLength: {
-                    value: 50,
-                    message: "Email must be less than 50 characters",
-                  },
-                  required: "Email is required",
-                })}
+                {...register("email", registerOptions.email)}
               />
               <Text color="red.500">
                 {errors.email && errors.email.message}
               </Text>
             </Stack>
             <Stack>
-              <InputGroup size="md">
-                <Input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Password"
-                  isDisabled={isLoading}
-                  {...register("password", {
-                    required: "Password is required",
-                  })}
-                />
-                <InputRightElement width="4.5rem">
-                  <Button
-                    h="1.75rem"
-                    size="sm"
-                    onClick={() => setShowPassword((show) => !show)}
-                    variant="ghost"
-                  >
-                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
+              <PasswordInput
+                isLoading={isLoading}
+                registeration={register(
+                  "password",
+                  registerOptions.loginPassword
+                )}
+              />
               <Text color="red.500">
                 {errors.password && errors.password.message}
               </Text>
@@ -91,12 +63,7 @@ export default (): JSX.Element => {
           <Button type="submit" isDisabled={isLoading || !isValid}>
             {isLoading ? <Spinner /> : "Sign in"}
           </Button>
-          {isError && error?.request?.status !== 400 && (
-            <Alert status="error">
-              <AlertIcon />
-              <AlertDescription>{error.message}</AlertDescription>
-            </Alert>
-          )}
+          <ErrorALert isError={isError} error={error} />
           <Link width="fit-content" to="/register" as={RouterLink}>
             New to our platform? Sign up now and discover more
           </Link>

@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Flex, Stack } from "@chakra-ui/react";
-import GameInfo from "./GameInfo";
-import GameScreenshots from "./GameScreenshots";
-import GamesTrailers from "./GamesTrailers";
+import { GameInfo, GameScreenshots, GameTrailer } from "src/containers/Game";
 
 export default (): JSX.Element => {
   const params = useParams();
@@ -17,7 +15,7 @@ export default (): JSX.Element => {
     >
       <GameInfo id={params.id} />
       <Stack flex={1} gap={10}>
-        <GamesTrailers id={params.id} />
+        <GameTrailer id={params.id} />
         <GameScreenshots id={params.id} />
       </Stack>
     </Flex>

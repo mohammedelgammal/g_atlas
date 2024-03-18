@@ -1,6 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import Aside from "src/components/Aside/Aside";
-import Main from "src/components/Main/Main";
+import { Aside, Main } from "src/containers";
 
 export default (): JSX.Element => {
   return (

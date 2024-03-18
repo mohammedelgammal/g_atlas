@@ -1,7 +1,7 @@
 import { Alert, Flex, SimpleGrid, Spinner } from "@chakra-ui/react";
 import { useShallow } from "zustand/react/shallow";
 import useStore from "src/store";
-import { Game, GamesLoading } from "./";
+import { Game, GamesLoading } from ".";
 import useGames from "src/hooks/useGames";
 import useOnScreen from "src/hooks/useOnScreen";
 
