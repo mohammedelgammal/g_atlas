@@ -1,9 +1,9 @@
 import { SimpleGrid, Skeleton, SkeletonText, Stack } from "@chakra-ui/react";
-import { getMainLoadingSkeleton } from "src/utils/helpers";
+import { getLoadingSkeleton } from "src/utils/helpers";
 import { GamesLoadingProps } from "src/types/Main";
 
 export default ({ length }: GamesLoadingProps): JSX.Element => {
-  const skeletons = getMainLoadingSkeleton(length);
+  const skeletons = getLoadingSkeleton(length);
 
   return (
     <SimpleGrid

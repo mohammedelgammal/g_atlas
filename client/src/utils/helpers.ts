@@ -6,7 +6,7 @@ import { FiltersType, ResponseType, TrailerType } from "src/types/Services";
 export const getRandomIcon = (iconsMap: IconType[]) =>
   _.take(_.shuffle(iconsMap), _.random(1, iconsMap.length));
 
-export const getMainLoadingSkeleton = (length: number) =>
+export const getLoadingSkeleton = (length: number) =>
   Array.from({ length }, (v, i): number => (v ? i : i));
 
 export const cleanUpFilters = (filters: FiltersType): FiltersType => {
@@ -15,9 +15,6 @@ export const cleanUpFilters = (filters: FiltersType): FiltersType => {
       delete filters[key as keyof FiltersType];
   return filters;
 };
-
-export const getScreenshotsLoadingSkeletons = (length: number) =>
-  Array.from({ length }, (v, i): number => (v ? i : i));
 
 export const getTrailer = (
   trailers: ResponseType<TrailerType> | undefined
@@ -29,6 +26,3 @@ export const getTrailer = (
     poster: firstTrailer.preview,
   };
 };
-
-export const getInfoLoadingSkeleton = (length: number) =>
-  Array.from({ length }, (v, i): number => (v ? i : i));
