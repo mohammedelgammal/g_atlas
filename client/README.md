@@ -28,13 +28,19 @@ GAtlas is a game atlas for gamers to search for their favorite games, view detai
    git clone
    ```
 
-2. Install the dependencies
+2. Change the directory to the client folder
+
+   ```bash
+   cd client
+   ```
+
+3. Install the dependencies
 
    ```bash
    npm install
    ```
 
-3. Create a `.env` file and add the following environment variables:
+4. Create a `.env` file and add the following environment variables:
 
    ```env
    VITE_GAME_API_BASE_URL=https://api.rawg.io/api
@@ -42,7 +48,7 @@ GAtlas is a game atlas for gamers to search for their favorite games, view detai
    VITE_SECRET_KEY=your_secret
    ```
 
-4. Run the client server
+5. Run the client server
 
    ```bash
     npm start

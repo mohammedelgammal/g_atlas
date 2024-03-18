@@ -20,7 +20,7 @@ GAtlas is a game atlas for gamers to search for their favorite games, view detai
 
 ## Run Locally
 
-## Installation
+### Installation
 
 1. Clone the repository
 
@@ -28,22 +28,6 @@ GAtlas is a game atlas for gamers to search for their favorite games, view detai
    git clone
    ```
 
-2. Install the dependencies
+Follow the instructions in the `client` and `server` README.md directories to run the client and server locally.
 
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env` file and add the following environment variables:
-
-   ```env
-   VITE_GAME_API_BASE_URL=https://api.rawg.io/api
-   VITE_AUTH_API_BASE_URL=http://localhost:8000/api/users
-   VITE_SECRET_KEY=your_secret
-   ```
-
-4. Run the client server
-
-   ```bash
-    npm start
-   ```
+[]: # (END)
