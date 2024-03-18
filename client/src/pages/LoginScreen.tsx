@@ -1,18 +1,8 @@
-import { Link as RouterLink } from "react-router-dom";
-import {
-  Button,
-  Flex,
-  Input,
-  Spinner,
-  Text,
-  Link,
-  Stack,
-} from "@chakra-ui/react";
+import { Flex, Input, Text } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import AuthFormUI from "src/common/AuthFormUI";
 import AuthRoute from "src/common/AuthRoute";
 import useLogin from "src/hooks/useLogin";
-import PasswordInput from "src/common/PasswordInput";
-import ErrorALert from "src/common/ErrorALert";
 import registerOptions from "src/utils/registerOptions";
 import { LoginFormFields } from "src/types/FormFields";
 
@@ -35,38 +25,35 @@ export default (): JSX.Element => {
         <Flex gap={7} flexDir="column">
           <Text fontSize="5xl">Login</Text>
           <Flex gap={4} flexDir="column">
-            <Stack>
+            <AuthFormUI.InputField error={errors?.email?.message}>
               <Input
                 type="email"
                 placeholder="Email"
                 isDisabled={isLoading}
                 {...register("email", registerOptions.email)}
               />
-              <Text color="red.500">
-                {errors.email && errors.email.message}
-              </Text>
-            </Stack>
-            <Stack>
-              <PasswordInput
+            </AuthFormUI.InputField>
+            <AuthFormUI.InputField error={errors?.password?.message}>
+              <AuthFormUI.PasswordInput
                 isLoading={isLoading}
                 registeration={register(
                   "password",
                   registerOptions.loginPassword
                 )}
               />
-              <Text color="red.500">
-                {errors.password && errors.password.message}
-              </Text>
-            </Stack>
-            <Text color="red.500">{errors.root && errors.root.message}</Text>
+            </AuthFormUI.InputField>
+            <AuthFormUI.InputField error={errors?.root?.message} />
           </Flex>
-          <Button type="submit" isDisabled={isLoading || !isValid}>
-            {isLoading ? <Spinner /> : "Sign in"}
-          </Button>
-          <ErrorALert isError={isError} error={error} />
-          <Link width="fit-content" to="/register" as={RouterLink}>
-            New to our platform? Sign up now and discover more
-          </Link>
+          <AuthFormUI.SubmitButton
+            isValid={isValid}
+            isLoading={isLoading}
+            submitText="Login"
+          />
+          <AuthFormUI.ErrorAlert isError={isError} error={error} />
+          <AuthFormUI.CallToAction
+            to="/register"
+            content="New to our platform? Sign up now and discover more"
+          />
         </Flex>
       </form>
     </AuthRoute>

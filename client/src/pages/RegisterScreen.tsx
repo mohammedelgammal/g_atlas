@@ -1,20 +1,10 @@
-import { Link as RouterLink } from "react-router-dom";
-import {
-  Button,
-  Flex,
-  Input,
-  Spinner,
-  Text,
-  Link,
-  Stack,
-} from "@chakra-ui/react";
+import { Flex, Input, Text } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import useRegister from "src/hooks/useRegister";
 import AuthRoute from "src/common/AuthRoute";
 import { RegisterFormData } from "src/types/Services";
 import registerOptions from "src/utils/registerOptions";
-import PasswordInput from "src/common/PasswordInput";
-import ErrorALert from "src/common/ErrorALert";
+import AuthFormUI from "src/common/AuthFormUI";
 
 export default (): JSX.Element => {
   const {
@@ -40,49 +30,43 @@ export default (): JSX.Element => {
         <Flex gap={7} flexDir="column">
           <Text fontSize="5xl">Sign up</Text>
           <Flex gap={4} flexDir="column">
-            <Stack>
+            <AuthFormUI.InputField error={errors?.username?.message}>
               <Input
                 type="text"
                 placeholder="Username"
                 isDisabled={isLoading}
                 {...register("username", registerOptions.username)}
               />
-              <Text color="red.500">
-                {errors.username && errors.username.message}
-              </Text>
-            </Stack>
-            <Stack>
+            </AuthFormUI.InputField>
+            <AuthFormUI.InputField error={errors?.email?.message}>
               <Input
                 type="email"
                 placeholder="Email"
                 isDisabled={isLoading}
                 {...register("email", registerOptions.email)}
               />
-              <Text color="red.500">
-                {errors.email && errors.email.message}
-              </Text>
-            </Stack>
-            <Stack>
-              <PasswordInput
+            </AuthFormUI.InputField>
+            <AuthFormUI.InputField error={errors?.password?.message}>
+              <AuthFormUI.PasswordInput
                 isLoading={isLoading}
                 registeration={register(
                   "password",
                   registerOptions.registerPassword(getValues("email"))
                 )}
               />
-              <Text color="red.500">
-                {errors.password && errors.password.message}
-              </Text>
-            </Stack>
-            <Text color="red.500">{errors.root && errors.root.message}</Text>
+            </AuthFormUI.InputField>
+            <AuthFormUI.InputField error={errors?.root?.message} />
           </Flex>
-          <Button type="submit" isDisabled={isLoading || !isValid}>
-            {isLoading ? <Spinner /> : "Sign up"}
-          </Button>
-          <ErrorALert isError={isError} error={error} />
-          <Link width="fit-content" to="/login" as={RouterLink}>
-            Already have an account? Log in.
-          </Link>
+          <AuthFormUI.SubmitButton
+            isValid={isValid}
+            isLoading={isLoading}
+            submitText="Sign up"
+          />
+          <AuthFormUI.ErrorAlert isError={isError} error={error} />
+          <AuthFormUI.CallToAction
+            to="/login"
+            content="Already have an account? Log in."
+          />
         </Flex>
       </form>
     </AuthRoute>

@@ -1,4 +1,4 @@
-import { FiltersType } from "./hooks/useGames";
+import { FiltersType } from "./types/Services";
 
 const token = localStorage.getItem("loginToken");
 
