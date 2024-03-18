@@ -1,5 +1,4 @@
-import { Box } from "@chakra-ui/react";
-import { useColorMode } from "@chakra-ui/react";
+import { Box, useColorMode } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 
 export default (): JSX.Element => {

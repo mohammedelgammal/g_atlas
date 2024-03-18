@@ -1,7 +1,7 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/gatlas.png";
-import { PRIMARY_COlOR } from "../../constants";
+import { Flex, Image, Text } from "@chakra-ui/react";
+import { PRIMARY_COlOR } from "src/constants";
+import logo from "src/assets/gatlas.png";
 
 export default (): JSX.Element => (
   <Link to="/">

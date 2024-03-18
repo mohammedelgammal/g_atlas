@@ -7,7 +7,7 @@ import {
   InputLeftElement,
   useColorMode,
 } from "@chakra-ui/react";
-import useSearchDebounce from "../../hooks/useSearchDebounce";
+import useSearchDebounce from "src/hooks/useSearchDebounce";
 
 export default (): JSX.Element => {
   const [term, setTerm] = useState<string>("");

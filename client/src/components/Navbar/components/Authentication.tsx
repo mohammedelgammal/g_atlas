@@ -13,9 +13,9 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import useStore from "../../store";
 import { EmailIcon } from "@chakra-ui/icons";
-import { PRIMARY_COlOR } from "../../constants";
+import useStore from "src/store";
+import { PRIMARY_COlOR } from "src/constants";
 
 export default (): JSX.Element => {
   const user = useStore((state) => state.user);
