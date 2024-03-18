@@ -23,9 +23,7 @@ import {
   SubmitButtonProps,
 } from "src/types/FormFields";
 
-const AuthFormUI = ({ children }: AuthFormUIProps) => {
-  return <>{children}</>;
-};
+const AuthFormUI = ({ children }: AuthFormUIProps): React.ReactNode => children;
 
 AuthFormUI.InputField = ({ children, error }: InputFieldProps) => {
   return (
