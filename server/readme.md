@@ -48,7 +48,7 @@ This API is responsible for managing the authentication of users. It is responsi
 4. Run the server
 
    ```bash
-    npm start
+    npm run server
    ```
 
 ## Endpoints
