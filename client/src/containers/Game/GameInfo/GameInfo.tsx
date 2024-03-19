@@ -20,9 +20,7 @@ export default ({ id = "" }: GameInfoProps): JSX.Element => {
           <Text fontSize="5xl" fontWeight="bold">
             {gameDetails?.name}
           </Text>
-          <Text color="gray">
-            <TruncateText>{gameDetails?.description_raw}</TruncateText>
-          </Text>
+          <TruncateText>{gameDetails?.description_raw}</TruncateText>
           <SimpleGrid columns={2} mt={8}>
             <InfoBox
               title="Platforms"

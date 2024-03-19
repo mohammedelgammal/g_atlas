@@ -24,7 +24,7 @@ export default (
     },
     onSuccess: () => {
       reset();
-      navigate("/redirecting/login");
+      navigate("/login");
     },
     onError: (err) => {
       if (err.request.status === 400)

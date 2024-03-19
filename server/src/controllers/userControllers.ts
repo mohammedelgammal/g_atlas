@@ -63,13 +63,18 @@ const loginUser = asyncHandler(async (req, res) => {
 
 const getMe = asyncHandler(async (req, res) => {
   const { user } = req.body;
-  const targetUser = await UserModel.findOne(user._id);
-  if (targetUser)
-    res.status(200).json({
-      _id: targetUser._id,
-      username: targetUser.username,
-      email: targetUser.email,
-    });
+  try {
+    const targetUser = await UserModel.findOne(user._id);
+    if (targetUser)
+      res.status(200).json({
+        _id: targetUser._id,
+        username: targetUser.username,
+        email: targetUser.email,
+      });
+  } catch (err) {
+    res.status(404);
+    throw new Error("Invalid token");
+  }
 });
 
 const generateToken = (id: Schema.Types.ObjectId) =>

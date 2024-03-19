@@ -5,7 +5,6 @@ import GameDetails from "./pages/GameDetailsScreen";
 import Games from "./pages/HomeScreen";
 import Register from "./pages/RegisterScreen";
 import Login from "./pages/LoginScreen";
-import Redirecting from "./common/Redirecting";
 
 export default createBrowserRouter([
   {
@@ -25,10 +24,6 @@ export default createBrowserRouter([
       {
         path: "login",
         element: <Login />,
-      },
-      {
-        path: "redirecting",
-        element: <Redirecting />,
       },
     ],
   },
