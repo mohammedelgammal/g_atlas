@@ -71,7 +71,7 @@ GAtlas is a gamer's paradise, designed with Vite, React, and ChakraUI. It's your
 7. Run the server
 
    ```bash
-   npm start
+   npm run server
    ```
 
 8. Open your browser and go to `http://localhost:5173` to view the app.
