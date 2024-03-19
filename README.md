@@ -1,6 +1,6 @@
 # GAtlas - A Game Atlas for Gamers 🎮
 
-GAtlas is a game atlas for gamers to search for their favorite games, view details, and filter by genre and platform to find the perfect game to play. It is built with Vite, React, and ChakraUI.
+GAtlas is a gamer's paradise, designed with Vite, React, and ChakraUI. It's your one-stop destination to search, explore, and filter through a vast selection of games by genre and platform. Behind the scenes, GAtlas operates on a two-part backend: the RAWG API fetches game data, while a Node.js backend with Express and MongoDB handles user authentication. This backend ensures smooth registration, login, and profile access while keeping authentication tokens secure. With GAtlas, finding the perfect game is a breeze!
 
 ## Features
 
@@ -28,4 +28,54 @@ GAtlas is a game atlas for gamers to search for their favorite games, view detai
    git clone
    ```
 
-Follow the instructions in the `client` and `server` README.md directories to run the client and server locally.
+2. Frontend Setup
+
+   ```bash
+   cd client
+   npm install
+   ```
+
+3. Environment Variables for Frontend
+
+   Create a `.env` file in the `client` directory and add the following environment variables:
+
+   ```env
+   VITE_GAME_API_BASE_URL=https://api.rawg.io/api
+   VITE_AUTH_API_BASE_URL=http://localhost:8000/api/users
+   VITE_SECRET_KEY=your_secret
+   ```
+
+4. Run the client server
+
+   ```bash
+    npm start
+   ```
+
+5. Backend Setup
+
+   ```bash
+   cd server
+   npm install
+   ```
+
+6. Environment Variables for Backend
+
+   Create a `.env` file and add the following environment variables:
+
+   ```env
+   SERVER_CONNECTION_PORT=8000
+   DB_CONNECTION_URI=mongodb://localhost:27017/gatlas
+   JWT_SECRET=your_secret
+   ```
+
+7. Run the server
+
+   ```bash
+   npm start
+   ```
+
+8. Open your browser and go to `http://localhost:5173` to view the app.
+
+9. Install MongoDB
+
+   Make sure you have MongoDB installed and running on your local machine. If not, you can install it from [here](https://www.mongodb.com/try/download/community).
