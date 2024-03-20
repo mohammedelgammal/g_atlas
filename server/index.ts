@@ -7,7 +7,7 @@ import errorHandler from "./middlewares/errorHandler";
 
 dotenv.config();
 connectDB();
-const connectionPort = process.env.SERVER_CONNECTION_PORT!;
+const connectionPort = parseInt(process.env.PORT || "8000");
 const app = express();
 
 app
@@ -16,6 +16,6 @@ app
   .use(express.urlencoded({ extended: false }))
   .use("/api/users/", userRoutes)
   .use(errorHandler)
-  .listen(connectionPort, () => {
+  .listen(connectionPort, "0.0.0.0", () => {
     console.info(`Server listening on port ${connectionPort}`);
   });
