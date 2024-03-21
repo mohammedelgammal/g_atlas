@@ -19,12 +19,10 @@ const protect = asyncHandler(
         );
         next();
       } catch (error: any) {
-        console.error(error);
         res.status(401);
         throw new Error("Not authorized");
       }
     }
-
     if (!token) {
       res.status(401);
       throw new Error("Not authorized, no token");
