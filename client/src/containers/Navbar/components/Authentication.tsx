@@ -1,4 +1,4 @@
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -18,10 +18,12 @@ import useStore from "src/store";
 import { PRIMARY_COlOR } from "src/constants";
 
 export default (): JSX.Element => {
+  const navigate = useNavigate();
   const user = useStore((state) => state.user);
   const handleSignOut = (): void => {
     localStorage.removeItem("loginToken");
     window.location.reload();
+    navigate("/");
   };
 
   return (
