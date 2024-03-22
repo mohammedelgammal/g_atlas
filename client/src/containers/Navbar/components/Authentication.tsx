@@ -20,8 +20,8 @@ import { PRIMARY_COlOR } from "src/constants";
 export default (): JSX.Element => {
   const user = useStore((state) => state.user);
   const handleSignOut = (): void => {
-    window.location.href = "/";
     localStorage.removeItem("loginToken");
+    window.location.reload();
   };
 
   return (
