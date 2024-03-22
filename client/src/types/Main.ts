@@ -5,3 +5,7 @@ export interface EmojiProps {
 export interface GamesLoadingProps {
   length: number;
 }
+
+export interface AuthenticationProps {
+  isLoading: boolean;
+}

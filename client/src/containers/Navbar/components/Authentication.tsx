@@ -10,14 +10,16 @@ import {
   PopoverCloseButton,
   PopoverContent,
   PopoverTrigger,
+  Spinner,
   Stack,
   Text,
 } from "@chakra-ui/react";
 import { EmailIcon } from "@chakra-ui/icons";
 import useStore from "src/store";
 import { PRIMARY_COlOR } from "src/constants";
+import { AuthenticationProps } from "src/types/Main";
 
-export default (): JSX.Element => {
+export default ({ isLoading }: AuthenticationProps): JSX.Element => {
   const navigate = useNavigate();
   const user = useStore((state) => state.user);
   const handleSignOut = (): void => {
@@ -29,13 +31,23 @@ export default (): JSX.Element => {
   return (
     <Popover>
       <PopoverTrigger>
-        <Avatar
-          w={10}
-          h={10}
-          cursor="pointer"
-          bg="teal.500"
-          name={user.username}
-        />
+        {isLoading ? (
+          <Avatar
+            w={10}
+            h={10}
+            cursor="pointer"
+            bg="teal.500"
+            icon={<Spinner />}
+          />
+        ) : (
+          <Avatar
+            w={10}
+            h={10}
+            cursor="pointer"
+            bg="teal.500"
+            name={user.username}
+          />
+        )}
       </PopoverTrigger>
       <PopoverContent style={{ padding: "10px 5px", boxShadow: "unset" }}>
         <PopoverArrow />
