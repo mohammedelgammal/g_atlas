@@ -11,7 +11,7 @@ export default <T>(): {
   };
   const options: IntersectionObserverInit = {
     root: null,
-    rootMargin: "0",
+    rootMargin: "0px",
     threshold: 0,
   };
   useEffect(() => {
