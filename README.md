@@ -2,6 +2,17 @@
 
 GAtlas is a gamer's paradise, designed with Vite, React, and ChakraUI. It's your one-stop destination to search, explore, and filter through a vast selection of games by genre and platform. Behind the scenes, GAtlas operates on a two-part backend: the RAWG API fetches game data, while a Node.js backend with Express and MongoDB handles user authentication. This backend ensures smooth registration, login, and profile access while keeping authentication tokens secure. With GAtlas, finding the perfect game is a breeze!
 
+## Deployment
+
+The Frontend is deployed on Github-Pages and the Backend is deployed on Render.
+
+### Disclaimer 🚨
+
+Backend deployment service spins down with inactivity, which can delay requests by 50 seconds or more.
+
+- **Frontend**: [GAtlas](https://mohammedelgammal.github.io/g_atlas/)
+- **Backend**: [GAtlas API](https://g-atlas-backend.onrender.com/api/users/)
+
 ## Features
 
 - **Search**: Search for games by name. The search bar uses debouncing to prevent unnecessary API calls and improve performance.
