@@ -11,7 +11,7 @@ const db_1 = __importDefault(require("./config/db"));
 const errorHandler_1 = __importDefault(require("./middlewares/errorHandler"));
 dotenv_1.default.config();
 (0, db_1.default)();
-const connectionPort = process.env.SERVER_CONNECTION_PORT || 5000;
+const connectionPort = process.env.PORT || 5000;
 const app = (0, express_1.default)();
 app
     .use((0, cors_1.default)())
