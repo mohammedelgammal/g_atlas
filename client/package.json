@@ -1,4 +1,5 @@
 {
+  "homepage": "https://gatlas.mohammedelgammal.tech",
   "name": "g_atlas",
   "private": true,
   "version": "1.0.0",
@@ -6,7 +7,9 @@
   "scripts": {
     "build": "concurrently \"rimraf dist\"  \"vite build\"",
     "prestart": "npm run build",
-    "start": "vite"
+    "start": "vite",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
@@ -20,6 +23,7 @@
     "@types/styled-components": "^5.1.34",
     "concurrently": "^8.2.2",
     "framer-motion": "^11.0.3",
+    "gh-pages": "^6.1.1",
     "jwt-decode": "^4.0.0",
     "lodash": "^4.17.21",
     "ms": "^2.1.3",
