@@ -7,22 +7,17 @@
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
       (function(l) {
-          if (l.search[1] === '/') {
+          // Check if the search part of the URL contains '/'
+          if (l.search.includes('/')) {
               var decoded = l.search.slice(1).split('&').map(function(s) {
-                  return s.replace(/~and~/g, '&')
+                  return s.replace(/~and~/g, '&').replace(/\//g, '%2F');
+                  // Replace all occurrences of '/' with its URL encoded equivalent '%2F'
               }).join('?');
               
-              // Modify this condition to check if the pathname already ends with a slash
-              if (l.pathname.endsWith('/')) {
-                  window.history.replaceState(null, null,
-                      l.pathname + decoded + l.hash
-                  );
-              } else {
-                  // Add a trailing slash to the pathname before updating the history state
-                  window.history.replaceState(null, null,
-                      l.pathname + '/' + decoded + l.hash
-                  );
-              }
+              // Replace all occurrences of '/' in the pathname and update the history state
+              window.history.replaceState(null, null,
+                  l.pathname.replace(/\//g, '%2F') + decoded + l.hash
+              );
           }
       }(window.location))
     </script>
