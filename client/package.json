@@ -1,5 +1,4 @@
 {
-  "homepage": "https://mohammedelgammal.github.io/g-atlas",
   "name": "g_atlas",
   "private": true,
   "version": "1.0.0",
@@ -7,9 +6,7 @@
   "scripts": {
     "build": "concurrently \"rimraf dist\"  \"vite build\"",
     "prestart": "npm run build",
-    "start": "vite",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "start": "vite"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
