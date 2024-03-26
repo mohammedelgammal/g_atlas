@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
+import { AxiosRequestConfig } from "axios";
 import { ResponseType } from "src/types/Services";
 
 const axiosInstance = axios.create({
