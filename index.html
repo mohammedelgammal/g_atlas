@@ -7,19 +7,18 @@
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
       (function(l) {
-          // Check if the search part of the URL contains '/'
-          if (l.search.includes('/')) {
+          // Check if the last character of the pathname is a '/'
+          if (l.pathname.slice(-1) === '/') {
               var decoded = l.search.slice(1).split('&').map(function(s) {
-                  return s.replace(/~and~/g, '&').replace(/\//g, '%2F');
-                  // Replace all occurrences of '/' with its URL encoded equivalent '%2F'
+                  return s.replace(/~and~/g, '&');
               }).join('?');
               
-              // Replace all occurrences of '/' in the pathname and update the history state
+              // Remove the last slash from the pathname and update the history state
               window.history.replaceState(null, null,
-                  l.pathname.replace(/\//g, '%2F') + decoded + l.hash
+                  l.pathname.slice(0, -1) + decoded + l.hash
               );
           }
-      }(window.location))
+      }(window.location));
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
     <title>GAtlas - A Video Game Discovery Service</title>
