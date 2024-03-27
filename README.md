@@ -4,14 +4,10 @@ GAtlas is a gamer's paradise, designed with Vite, React, and ChakraUI. It's your
 
 ## Deployment
 
-The Frontend is deployed on Github-Pages and the Backend is deployed on Render.
+The Frontend is deployed on Github-Pages and the Backend is deployed on Heroku.
 
-### Disclaimer 🚨
-
-Backend deployment service spins down with inactivity, which can delay requests by 50 seconds or more.
-
-- **Frontend**: [GAtlas](https://mohammedelgammal.github.io/g_atlas/)
-- **Backend**: [GAtlas API](https://g-atlas-backend.onrender.com/api/users/)
+- **Frontend**: [GAtlas](https://gatlas.mohammedelgammal.tech)
+- **Backend**: [GAtlas API](https://gatlas-api.mohammedelgammal.tech/api/users)
 
 ## Features
 
@@ -53,7 +49,7 @@ Backend deployment service spins down with inactivity, which can delay requests 
    ```env
    VITE_GAME_API_BASE_URL=https://api.rawg.io/api
    VITE_AUTH_API_BASE_URL=http://localhost:8000/api/users
-   VITE_SECRET_KEY=your_secret
+   VITE_SECRET_KEY=<your_secret>
    ```
 
 4. Run the client server
@@ -74,9 +70,10 @@ Backend deployment service spins down with inactivity, which can delay requests 
    Create a `.env` file and add the following environment variables:
 
    ```env
-   SERVER_CONNECTION_PORT=8000
+   PORT=8000
    DB_CONNECTION_URI=mongodb://localhost:27017/gatlas
-   JWT_SECRET=your_secret
+   JWT_SECRET=<your_secret>
+   NODE_ENV=development
    ```
 
 7. Run the server
