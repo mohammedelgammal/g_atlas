@@ -5,12 +5,12 @@ import GameDetails from "./pages/GameDetailsScreen";
 import Games from "./pages/HomeScreen";
 import Register from "./pages/RegisterScreen";
 import Login from "./pages/LoginScreen";
+import Form from "./pages/Form";
 
 export default createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Games /> },
       {
@@ -25,6 +25,19 @@ export default createBrowserRouter([
         path: "login",
         element: <Login />,
       },
+      {
+        path: "form",
+        element: (
+          <>
+            <Form />
+            <Form />
+          </>
+        ),
+      },
     ],
+  },
+  {
+    path: "*",
+    element: <App />,
   },
 ]);
